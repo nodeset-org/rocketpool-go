@@ -145,7 +145,7 @@ func (c *MinipoolManager) GetVacantMinipoolAddress(mc *batch.MultiCaller, addres
 // Get all minipool addresses in a standalone call.
 // This will use an internal batched multicall invocation to retrieve all of them.
 // Provide the value returned from GetMinipoolCount() in minipoolCount.
-func (c *MinipoolManager) GetMinipoolAddresses(mc *batch.MultiCaller, minipoolCount uint64, opts *bind.CallOpts) ([]common.Address, error) {
+func (c *MinipoolManager) GetMinipoolAddresses(minipoolCount uint64, opts *bind.CallOpts) ([]common.Address, error) {
 	addresses := make([]common.Address, minipoolCount)
 
 	// Run the multicall query for each address
