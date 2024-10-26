@@ -53,6 +53,9 @@ func NewRocketPool(client eth.IExecutionClient, rocketStorageAddress common.Addr
 
 	// Create the balance batcher
 	concurrentCallLimit := runtime.NumCPU() / 2
+	if concurrentCallLimit < 1 {
+		concurrentCallLimit = 1
+	}
 	balanceBatcher, err := batch.NewBalanceBatcher(client, balanceBatcherAddress, defaultBalanceBatchSize, concurrentCallLimit)
 	if err != nil {
 		return nil, fmt.Errorf("error creating balance batcher: %w", err)
